@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>it.univr</groupId>
+    <artifactId>InjectionTool</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>javascript</artifactId>
+  <name>Archetype - javascript</name>
+  <url>https://maven.apache.org</url>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.antlr</groupId>
+        <artifactId>antlr4-maven-plugin</artifactId>
+        <version>${antlr.version}</version>
+        <configuration>
+          <sourceDirectory>${basedir}</sourceDirectory>
+          <includes>
+            <include>JavaScriptLexer.g4</include>
+            <include>JavaScriptParser.g4</include>
+          </includes>
+          <visitor>true</visitor>
+          <listener>true</listener>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>antlr4</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.khubla.antlr</groupId>
+        <artifactId>antlr4test-maven-plugin</artifactId>
+        <version>${antlr4test-maven-plugin.version}</version>
+        <configuration>
+          <verbose>false</verbose>
+          <showTree>false</showTree>
+          <entryPoint>program</entryPoint>
+          <grammarName>JavaScript</grammarName>
+          <exampleFiles>examples/</exampleFiles>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
