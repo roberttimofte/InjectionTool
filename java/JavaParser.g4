@@ -44,11 +44,11 @@ compilationUnit
     ;
 
 packageDeclaration
-    : annotation* PACKAGE qualifiedName ';' WS?
+    : annotation* PACKAGE qualifiedName ';'
     ;
 
 importDeclaration
-    : IMPORT STATIC? qualifiedName ('.' '*')? ';' WS?
+    : IMPORT STATIC? qualifiedName ('.' '*')? ';'
     ;
 
 typeDeclaration
@@ -88,7 +88,7 @@ variableModifier
     ;
 
 classDeclaration
-    : CLASS WS? identifier WS? typeParameters? (EXTENDS typeType)? (IMPLEMENTS typeList)? (
+    : CLASS identifier typeParameters? (EXTENDS typeType)? (IMPLEMENTS typeList)? (
         PERMITS typeList
     )? // Java17
     classBody
@@ -127,7 +127,7 @@ interfaceDeclaration
     ;
 
 classBody
-    : WS?'{' classBodyDeclaration* '}' WS?
+    : '{' classBodyDeclaration* '}'
     ;
 
 interfaceBody
@@ -189,7 +189,7 @@ compactConstructorDeclaration
     ;
 
 fieldDeclaration
-    : typeType WS? variableDeclarators ';' WS?
+    : typeType variableDeclarators ';'
     ;
 
 interfaceBodyDeclaration
@@ -342,8 +342,8 @@ altAnnotationQualifiedName
     ;
 
 annotation
-    : ('@' qualifiedName | altAnnotationQualifiedName) WS? (
-        '(' WS? ( elementValuePairs | elementValue) WS?')' WS?
+    : ('@' qualifiedName | altAnnotationQualifiedName) (
+        '(' ( elementValuePairs | elementValue)? ')'
     )?
     ;
 

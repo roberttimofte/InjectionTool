@@ -14,9 +14,9 @@ IFS=$(echo -en "\n\b")
 # that end with the suffix .errors or .tree.
 if [ "$global" == "" ]
 then
-    files2=`dotnet trglob -- '../examples' | grep -v '.errors$' | grep -v '.tree$'`
+    files2=`dotnet trglob -- './input' | grep -v '.errors$' | grep -v '.tree$'`
 else
-    files2=`trglob '../examples' | grep -v '.errors$' | grep -v '.tree$'`
+    files2=`trglob './input' | grep -v '.errors$' | grep -v '.tree$'`
 fi
 
 files=()
@@ -51,9 +51,9 @@ CLASSPATH="$JAR\;."
 # Group parsing.
 if [ "$global" == "" ]
 then
-    echo "${files[*]}" | dotnet trwdog -- java -classpath "$CLASSPATH" Test -q -x -tee -tree > parse.txt 2>&1
+    echo "${files[*]}" | dotnet trwdog -- java -classpath "$CLASSPATH" it.univr.injectiontool.java.Test -q -x -tree > parse.txt 2>&1
 else
-    echo "${files[*]}" | trwdog java -classpath "$CLASSPATH" Test -q -x -tee -tree > parse.txt 2>&1
+    echo "${files[*]}" | trwdog java -classpath "$CLASSPATH" it.univr.injectiontool.java.Test -q -x -tree > parse.txt 2>&1
 fi
 status=$?
 

@@ -37,83 +37,82 @@ lexer grammar JavaLexer;
 
 // Keywords
 
-
-ABSTRACT     : 'abstract'      WS?;
-ASSERT       : 'assert'        WS?;
-BOOLEAN      : 'boolean'       WS?;
-BREAK        : 'break'         WS?;
-BYTE         : 'byte'          WS?;
-CASE         : 'case'          WS?;
-CATCH        : 'catch'         WS?;
-CHAR         : 'char'          WS?;
-CLASS        : 'class'         WS?;
-CONST        : 'const'         WS?;
-CONTINUE     : 'continue'      WS?;
-DEFAULT      : 'default'       WS?;
-DO           : 'do'            WS?;
-DOUBLE       : 'double'        WS?;
-ELSE         : 'else'          WS?;
-ENUM         : 'enum'          WS?;
-EXTENDS      : 'extends'       WS?;
-FINAL        : 'final'         WS?;
-FINALLY      : 'finally'       WS?;
-FLOAT        : 'float'         WS?;
-FOR          : 'for'           WS?;
-IF           : 'if'            WS?;
-GOTO         : 'goto'          WS?;
-IMPLEMENTS   : 'implements'    WS?;
-IMPORT       : 'import'        WS?;
-INSTANCEOF   : 'instanceof'    WS?;
-INT          : 'int'           WS?;
-INTERFACE    : 'interface'     WS?;
-LONG         : 'long'          WS?;
-NATIVE       : 'native'        WS?;
-NEW          : 'new'           WS?;
-PACKAGE      : 'package'       WS?;
-PRIVATE      : 'private'       WS?;
-PROTECTED    : 'protected'     WS?;
-PUBLIC       : 'public'        WS?;
-RETURN       : 'return'        WS?;
-SHORT        : 'short'         WS?;
-STATIC       : 'static'        WS?;
-STRICTFP     : 'strictfp'      WS?;
-SUPER        : 'super'         WS?;
-SWITCH       : 'switch'        WS?;
-SYNCHRONIZED : 'synchronized'  WS?;
-THIS         : 'this'          WS?;
-THROW        : 'throw'         WS?;
-THROWS       : 'throws'        WS?;
-TRANSIENT    : 'transient'     WS?;
-TRY          : 'try'           WS?;
-VOID         : 'void'          WS?;
-VOLATILE     : 'volatile'      WS?;
-WHILE        : 'while'         WS?;
+ABSTRACT     : 'abstract';
+ASSERT       : 'assert';
+BOOLEAN      : 'boolean';
+BREAK        : 'break';
+BYTE         : 'byte';
+CASE         : 'case';
+CATCH        : 'catch';
+CHAR         : 'char';
+CLASS        : 'class';
+CONST        : 'const';
+CONTINUE     : 'continue';
+DEFAULT      : 'default';
+DO           : 'do';
+DOUBLE       : 'double';
+ELSE         : 'else';
+ENUM         : 'enum';
+EXTENDS      : 'extends';
+FINAL        : 'final';
+FINALLY      : 'finally';
+FLOAT        : 'float';
+FOR          : 'for';
+IF           : 'if';
+GOTO         : 'goto';
+IMPLEMENTS   : 'implements';
+IMPORT       : 'import';
+INSTANCEOF   : 'instanceof';
+INT          : 'int';
+INTERFACE    : 'interface';
+LONG         : 'long';
+NATIVE       : 'native';
+NEW          : 'new';
+PACKAGE      : 'package';
+PRIVATE      : 'private';
+PROTECTED    : 'protected';
+PUBLIC       : 'public';
+RETURN       : 'return';
+SHORT        : 'short';
+STATIC       : 'static';
+STRICTFP     : 'strictfp';
+SUPER        : 'super';
+SWITCH       : 'switch';
+SYNCHRONIZED : 'synchronized';
+THIS         : 'this';
+THROW        : 'throw';
+THROWS       : 'throws';
+TRANSIENT    : 'transient';
+TRY          : 'try';
+VOID         : 'void';
+VOLATILE     : 'volatile';
+WHILE        : 'while';
 
 // Module related keywords
-MODULE     : 'module'         WS?;
-OPEN       : 'open'           WS?;
-REQUIRES   : 'requires'       WS?;
-EXPORTS    : 'exports'        WS?;
-OPENS      : 'opens'          WS?;
-TO         : 'to'             WS?;
-USES       : 'uses'           WS?;
-PROVIDES   : 'provides'       WS?;
-WITH       : 'with'           WS?;
-TRANSITIVE : 'transitive'     WS?;
+MODULE     : 'module';
+OPEN       : 'open';
+REQUIRES   : 'requires';
+EXPORTS    : 'exports';
+OPENS      : 'opens';
+TO         : 'to';
+USES       : 'uses';
+PROVIDES   : 'provides';
+WITH       : 'with';
+TRANSITIVE : 'transitive';
 
 // Local Variable Type Inference
-VAR: 'var'                    WS?; // reserved type name
+VAR: 'var'; // reserved type name
 
 // Switch Expressions
-YIELD: 'yield'                WS?; // reserved type name from Java 14
+YIELD: 'yield'; // reserved type name from Java 14
 
 // Records
-RECORD: 'record'               WS?;
+RECORD: 'record';
 
 // Sealed Classes
-SEALED     : 'sealed'         WS?;
-PERMITS    : 'permits'        WS?;
-NON_SEALED : 'non-sealed'     WS?;
+SEALED     : 'sealed';
+PERMITS    : 'permits';
+NON_SEALED : 'non-sealed';
 
 // Literals
 
@@ -201,7 +200,7 @@ ELLIPSIS : '...';
 
 // Whitespace and comments
 
-WS           : [ \t\r\n\u000C]+;
+WS           : [ \t\r\n\u000C]+ -> channel(HIDDEN);
 COMMENT      : '/*' .*? '*/'    -> channel(HIDDEN);
 LINE_COMMENT : '//' ~[\r\n]*    -> channel(HIDDEN);
 
