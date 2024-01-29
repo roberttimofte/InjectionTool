@@ -180,6 +180,8 @@ public class Test {
 
         ParseTree tree = parser.program();
 
+        //System.out.println(tree.toStringTree(parser));
+
         TypeScriptParserBaseVisitor<String> visitor = new TypeScriptParserBaseVisitor<String>();
         if (injectionPattern == InjectionPattern.DTO) {
             visitor = new DtoPatternVisitor();
@@ -187,12 +189,12 @@ public class Test {
 
         String visitResult = visitor.visit(tree);
 
-        /*String pattern = "<missing\\s*[^>]*>";
+        String pattern = "<missing\\s*[^>]*>";
         Pattern regex = Pattern.compile(pattern);
         Matcher matcher = regex.matcher(visitResult);
         String generatedCode = matcher.replaceAll("");
 
-        System.out.println(generatedCode);*/
+        //System.out.println(generatedCode);
 
         PrintWriter resultWriter = null;
         try {
