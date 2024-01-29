@@ -51,9 +51,9 @@ CLASSPATH="$JAR\;."
 # Group parsing.
 if [ "$global" == "" ]
 then
-    echo "${files[*]}" | dotnet trwdog -- java -classpath "$CLASSPATH" Test -q -x -tree > parse.txt 2>&1
+    echo "${files[*]}" | dotnet trwdog -- java -classpath "$CLASSPATH" it.univr.injectiontool.typescript.Test -q -x -tree > parse.txt 2>&1
 else
-    echo "${files[*]}" | trwdog java -classpath "$CLASSPATH" Test -q -x -tree > parse.txt 2>&1
+    echo "${files[*]}" | trwdog java -classpath "$CLASSPATH" it.univr.injectiontool.typescript.Test -q -x -tree > parse.txt 2>&1
 fi
 status=$?
 
