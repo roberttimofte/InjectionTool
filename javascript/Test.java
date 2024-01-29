@@ -37,7 +37,7 @@ public class Test {
     static String prefix = "";
     static boolean quiet = false;
 
-    private static InjectionPattern injectionPattern = InjectionPattern.PATTERN;
+    private static InjectionPattern injectionPattern = InjectionPattern.PICK;
 
     public static void main(String[] args) throws  FileNotFoundException, IOException
     {
@@ -181,9 +181,11 @@ public class Test {
 
         ParseTree tree = parser.program();
 
+        System.out.println(tree.toStringTree(parser));
+
         JavaScriptParserBaseVisitor<String> visitor = new JavaScriptParserBaseVisitor<String>();
-        if (injectionPattern == InjectionPattern.PATTERN) {
-            visitor = new MyVisitor();
+        if (injectionPattern == InjectionPattern.PICK) {
+            visitor = new PickPatternVisitor();
         }
 
         String visitResult = visitor.visit(tree);

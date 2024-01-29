@@ -1,1 +1,1 @@
-input/Classes.js
+input/Example.js
