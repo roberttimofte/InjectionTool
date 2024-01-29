@@ -189,12 +189,12 @@ public class Test {
 
         String visitResult = visitor.visit(tree);
 
-        String pattern = "<missing\\s*[^>]*>";
+        /*String pattern = "<missing\\s*[^>]*>";
         Pattern regex = Pattern.compile(pattern);
         Matcher matcher = regex.matcher(visitResult);
         String generatedCode = matcher.replaceAll("");
 
-        //System.out.println(generatedCode);
+        System.out.println(generatedCode);*/
 
         PrintWriter resultWriter = null;
         try {
