@@ -8,12 +8,12 @@ if [ -f transformGrammar.py ]; then python3 transformGrammar.py ; fi
 # parser and lexer.
 version=4.13.1
 
-antlr4 -v $version -encoding utf-8 -Dlanguage=Java   TypeScriptLexer.g4
-antlr4 -v $version -encoding utf-8 -Dlanguage=Java   TypeScriptParser.g4
+antlr4 -package it.univr.injectiontool.typescript -visitor -v $version -encoding utf-8 -Dlanguage=Java   TypeScriptLexer.g4
+antlr4 -package it.univr.injectiontool.typescript -visitor -v $version -encoding utf-8 -Dlanguage=Java   TypeScriptParser.g4
 
 
 JAR=`python -c "import os; from pathlib import Path; print(os.path.join(Path.home() , '.m2',  'repository', 'org', 'antlr', 'antlr4', '$version', 'antlr4-$version-complete.jar'))"`
 CLASSPATH="$JAR\;."
-javac -cp "$CLASSPATH" *.java
+javac -d . -cp "$CLASSPATH" *.java
 
 exit 0

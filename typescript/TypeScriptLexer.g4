@@ -25,7 +25,7 @@ CloseParen                 : ')';
 OpenBrace                  : '{' {this.ProcessOpenBrace();};
 TemplateCloseBrace         :     {this.IsInTemplateString()}? '}' -> popMode;
 CloseBrace                 : '}' {this.ProcessCloseBrace();};
-SemiColon                  : ';' WhiteSpaces?;
+SemiColon                  : ';';
 Comma                      : ',';
 Assign                     : '=';
 QuestionMark               : '?';
@@ -95,7 +95,7 @@ BinaryIntegerLiteral : '0' [bB] [01]+;
 
 /// Keywords
 
-Break      : 'break' WhiteSpaces?;
+Break      : 'break';
 Do         : 'do';
 Instanceof : 'instanceof';
 Typeof     : 'typeof';
@@ -122,32 +122,32 @@ Delete     : 'delete';
 In         : 'in';
 Try        : 'try';
 As         : 'as';
-From       : 'from' WhiteSpaces?;
+From       : 'from';
 ReadOnly   : 'readonly';
 Async      : 'async';
 
 /// Future Reserved Words
 
-Class   : 'class' WhiteSpaces?;
-Enum    : 'enum' WhiteSpaces?;
+Class   : 'class';
+Enum    : 'enum';
 Extends : 'extends';
-Super   : 'super' WhiteSpaces?;
-Const   : 'const' WhiteSpaces?;
-Export  : 'export' WhiteSpaces;
-Import  : 'import' WhiteSpaces?;
+Super   : 'super';
+Const   : 'const';
+Export  : 'export';
+Import  : 'import';
 
 /// The following tokens are also considered to be FutureReservedWords
 /// when parsing strict mode
 
-Implements : 'implements' WhiteSpaces?;
-Let        : 'let' WhiteSpaces?;
-Private    : 'private' WhiteSpaces?;
-Public     : 'public' WhiteSpaces?;
-Interface  : 'interface' WhiteSpaces?;
-Package    : 'package' WhiteSpaces?;
-Protected  : 'protected' WhiteSpaces?;
-Static     : 'static' WhiteSpaces?;
-Yield      : 'yield' WhiteSpaces?;
+Implements : 'implements';
+Let        : 'let';
+Private    : 'private';
+Public     : 'public';
+Interface  : 'interface';
+Package    : 'package';
+Protected  : 'protected';
+Static     : 'static';
+Yield      : 'yield';
 
 //keywords:
 
@@ -188,7 +188,7 @@ StringLiteral:
 
 BackTick: '`' {this.IncreaseTemplateDepth();} -> pushMode(TEMPLATE);
 
-WhiteSpaces: [\r\n\t\u2028\u2029\u000B\u000C\u0020\u00A0]+;
+WhiteSpaces: [\t\u000B\u000C\u0020\u00A0]+ -> channel(HIDDEN);
 
 LineTerminator: [\r\n\u2028\u2029] -> channel(HIDDEN);
 

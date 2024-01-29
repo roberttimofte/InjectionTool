@@ -96,7 +96,7 @@ unionOrIntersectionOrPrimaryType
     ;
 
 primaryType
-    : WhiteSpaces? '(' type_ ')' WhiteSpaces?                           # ParenthesizedPrimType
+    : '(' type_ ')'                              # ParenthesizedPrimType
     | predefinedType                             # PredefinedPrimType
     | typeReference                              # ReferencePrimType
     | objectType                                 # ObjectPrimType
@@ -324,7 +324,7 @@ decoratorList
     ;
 
 decorator
-    : '@' (decoratorMemberExpression | decoratorCallExpression) WhiteSpaces?
+    : '@' (decoratorMemberExpression | decoratorCallExpression)
     ;
 
 decoratorMemberExpression
@@ -394,11 +394,11 @@ importStatement
     ;
 
 fromBlock
-    : (Multiply | multipleImportStatement) (As identifierName)? From StringLiteral WhiteSpaces? eos WhiteSpaces?
+    : (Multiply | multipleImportStatement) (As identifierName)? From StringLiteral eos
     ;
 
 multipleImportStatement
-    : (identifierName ',')? WhiteSpaces? '{' WhiteSpaces? identifierName (',' WhiteSpaces? identifierName)* WhiteSpaces? '}' WhiteSpaces?
+    : (identifierName ',')? '{' identifierName (',' identifierName)* '}'
     ;
 
 exportStatement
@@ -526,7 +526,7 @@ classHeritage
     ;
 
 classTail
-    : WhiteSpaces? '{' WhiteSpaces? classElement* WhiteSpaces? '}' WhiteSpaces?
+    : '{' classElement* '}'
     ;
 
 classExtendsClause
@@ -737,7 +737,7 @@ arrowFunctionParameters
 
 arrowFunctionBody
     : singleExpression
-    | WhiteSpaces? '{' WhiteSpaces? functionBody WhiteSpaces? '}' WhiteSpaces?
+    | '{' functionBody '}'
     ;
 
 assignmentOperator

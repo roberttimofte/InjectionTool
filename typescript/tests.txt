@@ -1,1 +1,1 @@
-examples/auth.controller.ts
+input/auth.controller.ts
