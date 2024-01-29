@@ -1,6 +1,6 @@
 # Generated from trgen 0.21.16
 
-$Tests = "./examples"
+$Tests = "./input"
 Write-Host "Test cases here: $Tests"
 
 # Get a list of test files from the test directory. Do not include any
@@ -12,7 +12,7 @@ if (Test-Path -Path "tests.txt" -PathType Leaf) {
 $files = New-Object System.Collections.Generic.List[string]
 $allFiles = $(& trglob -- "$Tests" ; $last = $LASTEXITCODE )
 foreach ($file in $allFiles) {
-    $ext = $file | Split-Path -Extension
+    $ext = $file
     if (Test-Path $file -PathType Container) {
         continue
     } elseif ($ext -eq ".errors") {
@@ -41,7 +41,7 @@ if (-not(Test-Path -Path "tests.txt" -PathType Leaf)) {
 $version = Select-String -Path "build.sh" -Pattern "version=" | ForEach-Object { $_.Line -split "=" | Select-Object -Last 1 }
 $JAR = python -c "import os; from pathlib import Path; print(os.path.join(Path.home(), '.m2', 'repository', 'org', 'antlr', 'antlr4', '$version', ('antlr4-' + '$version' + '-complete.jar')))"
 # Group parsing.
-get-content "tests.txt" | trwdog -- java -cp "${JAR};." it.univr.injectiontool.javascript.Test -q -x -tee -tree *> parse.txt
+get-content "tests.txt" | trwdog -- java -cp "${JAR};." it.univr.injectiontool.javascript.Test -q -x -tree *> parse.txt
 $status = $LASTEXITCODE
 
 # trwdog returns 255 if it cannot spawn the process. This could happen

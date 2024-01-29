@@ -207,9 +207,9 @@ StringLiteral:
 
 BackTick: '`' {this.IncreaseTemplateDepth();} -> pushMode(TEMPLATE);
 
-WhiteSpaces: [\t\u000B\u000C\u0020\u00A0]+;
+WhiteSpaces: [\t\u000B\u000C\u0020\u00A0]+ -> channel(HIDDEN);
 
-LineTerminator: [\r\n\u2028\u2029];
+LineTerminator: [\r\n\u2028\u2029] -> channel(HIDDEN);
 
 /// Comments
 

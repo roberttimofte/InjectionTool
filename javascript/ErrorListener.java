@@ -1,5 +1,5 @@
 // Generated from trgen 0.21.16
-
+package it.univr.injectiontool.javascript;
 import org.antlr.v4.runtime.*;
 import java.nio.charset.StandardCharsets;
 import java.io.OutputStreamWriter;

@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 
 public class Test {
 
-    static boolean tee = true;
+    static boolean tee = false;
     static boolean show_profile = false;
     static boolean show_tree = false;
     static boolean show_tokens = false;
@@ -36,6 +36,8 @@ public class Test {
     static int string_instance = 0;
     static String prefix = "";
     static boolean quiet = false;
+
+    private static InjectionPattern injectionPattern = InjectionPattern.PATTERN;
 
     public static void main(String[] args) throws  FileNotFoundException, IOException
     {
@@ -149,73 +151,7 @@ public class Test {
         JavaScriptLexer lexer = new JavaScriptLexer(str);
         var tokens = new CommonTokenStream(lexer);
         JavaScriptParser parser = new JavaScriptParser(tokens);
-        JavaScriptParser.ProgramContext tree = parser.program();
 
-        /*if (show_tree)
-        {
-            if (tee)
-            {
-                PrintWriter treef = null;
-                try {
-                    treef = new PrintWriter(new OutputStreamWriter(new FileOutputStream(new File(input_name + ".tree")), StandardCharsets.UTF_8), true);
-                    //treef = new PrintStream(new File(input_name + ".tree"));
-                } catch (NullPointerException e) {
-                    treef = new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), true);;
-                } catch (FileNotFoundException e2) {
-                    treef = new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), true);
-                }
-                treef.print(tree.toStringTree(parser));
-                treef.close();
-            } else
-            {
-                System.err.println(tree.toStringTree(parser));
-            }
-        }*/
-
-        MyVisitor visitor = new MyVisitor();
-        String generatedCode = visitor.visit(tree);
-
-        String pattern = "<missing\\s*[^>]*>";
-        Pattern regex = Pattern.compile(pattern);
-        Matcher matcher = regex.matcher(generatedCode);
-        String result = matcher.replaceAll("");
-
-        /*System.out.println("-------------------------------");
-        System.out.println(result);
-        System.out.println("-------------------------------");*/
-
-        PrintWriter resultWriter = null;
-        try {
-            resultWriter = new PrintWriter(new OutputStreamWriter(new FileOutputStream(new File("output/"+input_name.split("/")[1])), StandardCharsets.UTF_8), true);
-            //treef = new PrintStream(new File(input_name + ".tree"));
-        } catch (NullPointerException e) {
-            resultWriter = new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), true);
-        } catch (FileNotFoundException e2) {
-            resultWriter = new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), true);
-        }
-
-        resultWriter.print(result);
-        resultWriter.close();
-
-        /*JavaScriptLexer lexer = new JavaScriptLexer(str);
-        if (show_tokens)
-        {
-            StringBuilder new_s = new StringBuilder();
-            for (int i = 0; ; ++i)
-            {
-                var ro_token = lexer.nextToken();
-                var token = (CommonToken)ro_token;
-                token.setTokenIndex(i);
-                new_s.append(token.toString());
-                new_s.append(System.getProperty("line.separator"));
-                if (token.getType() == IntStream.EOF)
-                    break;
-            }
-            System.err.println(new_s.toString());
-            lexer.reset();
-        }
-        var tokens = new CommonTokenStream(lexer);
-        JavaScriptParser parser = new JavaScriptParser(tokens);
         PrintStream output = null;
         try {
             output = tee ? new PrintStream(new File(input_name + ".errors")) : System.out;
@@ -230,6 +166,7 @@ public class Test {
         lexer.removeErrorListeners();
         parser.addErrorListener(listener_parser);
         lexer.addErrorListener(listener_lexer);
+
         if (show_diagnostic)
         {
             parser.addErrorListener(new MyDiagnosticErrorListener());
@@ -237,10 +174,39 @@ public class Test {
         if (show_trace)
         {
             parser.setTrace(true);
-//            ParserATNSimulator.trace_atn_sim = true;
+            //ParserATNSimulator.trace_atn_sim = true;
         }
+
         Instant start = Instant.now();
+
         ParseTree tree = parser.program();
+
+        JavaScriptParserBaseVisitor<String> visitor = new JavaScriptParserBaseVisitor<String>();
+        if (injectionPattern == InjectionPattern.PATTERN) {
+            visitor = new MyVisitor();
+        }
+
+        String visitResult = visitor.visit(tree);
+
+        /*String pattern = "<missing\\s*[^>]*>";
+        Pattern regex = Pattern.compile(pattern);
+        Matcher matcher = regex.matcher(visitResult);
+        String generatedCode = matcher.replaceAll("");
+
+        System.out.println(generatedCode);*/
+
+        PrintWriter resultWriter = null;
+        try {
+            resultWriter = new PrintWriter(new OutputStreamWriter(new FileOutputStream(new File("output/"+input_name.split("/")[1])), StandardCharsets.UTF_8), true);
+        } catch (NullPointerException e) {
+            resultWriter = new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), true);
+        } catch (FileNotFoundException e2) {
+            resultWriter = new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), true);
+        }
+
+        resultWriter.print(visitResult);
+        resultWriter.close();
+
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start, finish).toMillis();
         String result = "";
@@ -251,30 +217,11 @@ public class Test {
         }
         else
             result = "success";
-        if (show_tree)
-        {
-            if (tee)
-            {
-                PrintWriter treef = null;
-                try {
-                    treef = new PrintWriter(new OutputStreamWriter(new FileOutputStream(new File(input_name + ".tree")), StandardCharsets.UTF_8), true);
-                    //treef = new PrintStream(new File(input_name + ".tree"));
-                } catch (NullPointerException e) {
-                    treef = new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), true);;
-                } catch (FileNotFoundException e2) {
-                    treef = new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), true);
-                }
-                treef.print(tree.toStringTree(parser));
-                treef.close();
-            } else
-            {
-                System.err.println(tree.toStringTree(parser));
-            }
-        }
+
         if (!quiet)
         {
             System.err.println(prefix + "Java " + row_number + " " + input_name + " " + result + " " + (timeElapsed * 1.0) / 1000.0);
         }
-        if (tee) output.close();*/
+        if (tee) output.close();
     }
 }
