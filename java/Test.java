@@ -180,10 +180,7 @@ public class Test {
 
         ParseTree tree = parser.compilationUnit();
 
-        JavaParserBaseVisitor<String> visitor = new JavaParserBaseVisitor<String>();
-        if (injectionPattern == InjectionPattern.COPY_PROPERTIES) {
-            visitor = new CopyPropertiesPatternVisitor();
-        }
+        AbstractParseTreeVisitor<String> visitor = injectionPattern.getValue();
 
         String visitResult = visitor.visit(tree);
 
