@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const express = require('express')
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -5,8 +6,18 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
-// Where we will keep books
 let users = [];
+
+class User {
+    name = "";
+    email = "";
+    password = "";
+    is_admin = "";
+
+    constructor(user) {
+        Object.assign(this, user);
+    }
+}
 
 app.use(cors());
 
@@ -17,11 +28,10 @@ app.use(bodyParser.json());
 app.post('/user', (req, res) => {
     const user = new User(_.pick(req.body, ["name", "email", "password"]));
 
-    // Output the book to the console for debugging
     console.log(user);
     users.push(user);
 
-    res.send('Book is added to the database');
+    res.send('User is added to the database');
 });
 
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`));

@@ -14,10 +14,14 @@ public class PickPatternVisitor extends JavaScriptParserBaseVisitor<String> {
 
     @Override
     public String visitVariableDeclaration(JavaScriptParser.VariableDeclarationContext ctx) {
-        if (ctx.getText().contains(".pick")) {
+        if (ctx.getText().contains("_.pick")) {
+            String arguments = ctx.getText().split("_.pick\\(")[1];
+            String first_parameter = arguments.split(",")[0];
+
             ctx.removeLastChild();
-            ctx.addChild(new TerminalNodeImpl(new CommonToken(Token.DEFAULT_CHANNEL, "req.body")));
+            ctx.addChild(new TerminalNodeImpl(new CommonToken(Token.DEFAULT_CHANNEL, first_parameter)));
         }
+
         return ctx.getText();
     }
 }
