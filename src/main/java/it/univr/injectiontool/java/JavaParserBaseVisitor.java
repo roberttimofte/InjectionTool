@@ -11,7 +11,7 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
  * operations with no return type.
  */
 @SuppressWarnings("CheckReturnValue")
-public class JavaParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements JavaParserVisitor<T> {
+public abstract class JavaParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements JavaParserVisitor<T> {
 	/**
 	 * {@inheritDoc}
 	 *
@@ -894,4 +894,6 @@ public class JavaParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitArguments(JavaParser.ArgumentsContext ctx) { return visitChildren(ctx); }
+
+	protected abstract String aggregateResult(String aggregate, String nextResult);
 }

@@ -11,7 +11,7 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
  * operations with no return type.
  */
 @SuppressWarnings("CheckReturnValue")
-public class JavaScriptParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements JavaScriptParserVisitor<T> {
+public abstract class JavaScriptParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements JavaScriptParserVisitor<T> {
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1013,4 +1013,6 @@ public class JavaScriptParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> 
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitEos(JavaScriptParser.EosContext ctx) { return visitChildren(ctx); }
+
+    protected abstract String aggregateResult(String aggregate, String nextResult);
 }

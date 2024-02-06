@@ -3,6 +3,8 @@ package it.univr.injectiontool;
 import it.univr.injectiontool.java.*;
 import it.univr.injectiontool.javascript.JavaScriptLexer;
 import it.univr.injectiontool.javascript.JavaScriptParser;
+import it.univr.injectiontool.javascript.PickPatternVisitor;
+import it.univr.injectiontool.typescript.DtoPatternVisitor;
 import it.univr.injectiontool.typescript.TypeScriptLexer;
 import it.univr.injectiontool.typescript.TypeScriptParser;
 import it.univr.injectiontool.utils.InjectionPattern;
@@ -58,7 +60,7 @@ public class InjectionTool {
             String outputPath = outputUrl.getPath();
 
             Lexer lexer = null;
-            CommonTokenStream tokens;
+            CommonTokenStream tokens = null;
             Parser parser = null;
 
             if (programmingLanguage == ProgrammingLanguage.TYPESCRIPT) {
@@ -118,9 +120,25 @@ public class InjectionTool {
                 tree = ((JavaParser) parser).compilationUnit();
             }
 
-            AbstractParseTreeVisitor<String> visitor = injectionPattern.getValue();
+            //System.out.println(tree.toStringTree(parser));
 
-            String visitResult = visitor.visit(tree);
+            String injected_code = "";
+
+            if (injectionPattern == InjectionPattern.DTO) {
+                DtoPatternVisitor visitor = new DtoPatternVisitor(tokens);
+                visitor.visit(tree);
+                injected_code = visitor.rewriter.getText();
+            } else if (injectionPattern == InjectionPattern.PICK) {
+                PickPatternVisitor visitor = new PickPatternVisitor(tokens);
+                visitor.visit(tree);
+                injected_code = visitor.rewriter.getText();
+            } else if (injectionPattern == InjectionPattern.COPY_PROPERTIES) {
+                CopyPropertiesPatternVisitor visitor = new CopyPropertiesPatternVisitor(tokens);
+                visitor.visit(tree);
+                injected_code = visitor.rewriter.getText();
+            }
+
+            //System.out.println(injected_code);
 
             PrintWriter resultOutput;
             try {
@@ -129,7 +147,7 @@ public class InjectionTool {
                 resultOutput = new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), true);
             }
 
-            resultOutput.print(visitResult);
+            resultOutput.print(injected_code);
             resultOutput.close();
 
             if (file) errorOutput.close();

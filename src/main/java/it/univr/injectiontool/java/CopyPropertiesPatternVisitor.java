@@ -1,41 +1,40 @@
 package it.univr.injectiontool.java;
 
-import org.antlr.v4.runtime.tree.*;
-public class CopyPropertiesPatternVisitor extends JavaParserBaseVisitor<String> {
-    @Override
-    public String visitCompilationUnit(JavaParser.CompilationUnitContext ctx) {
-        for (int i = 0; i < ctx.children.size(); i++) {
-            visit(ctx.getChild(i));
-        }
-        return ctx.getText();
-    }
-    @Override
-    public String visitMethodCall(JavaParser.MethodCallContext ctx) {
-        if (ctx.getText().contains("copyProperties")) {
-            ParseTree arguments = ctx.getChild(1);
-            //System.out.println(arguments.getText());
-            visit(arguments);
-            //System.out.println(arguments.getText());
-        }
+import org.antlr.v4.runtime.BufferedTokenStream;
+import org.antlr.v4.runtime.TokenStreamRewriter;
+import org.antlr.v4.runtime.misc.Interval;
 
-        return ctx.getText();
+public class CopyPropertiesPatternVisitor extends JavaParserBaseVisitor<Void> {
+    BufferedTokenStream tokens;
+    public TokenStreamRewriter rewriter;
+
+    public CopyPropertiesPatternVisitor(BufferedTokenStream tokens) {
+        this.tokens = tokens;
+        rewriter = new TokenStreamRewriter(tokens);
     }
 
     @Override
-    public String visitArguments(JavaParser.ArgumentsContext ctx) {
-        if (ctx.getParent().getText().contains("copyProperties")) {
-            visit(ctx.getChild(1));
+    public Void visitExpressionList(JavaParser.ExpressionListContext ctx) {
+        String method_call = ctx.getParent().getParent().getText();
+        if (method_call.contains("copyProperties")) {
+            Interval source_interval = null;
+            for (int i = 3; i < ctx.getChildCount(); i++) {
+                source_interval = ctx.getChild(i).getSourceInterval();
+                rewriter.delete(source_interval.a, source_interval.b);
+            }
         }
 
-        return ctx.getText();
+        return null;
+    }
+
+    private void injectArguments(JavaParser.ExpressionListContext ctx) {
+        for (int i = ctx.start.getTokenIndex(); i <= ctx.stop.getTokenIndex(); i++) {
+            System.out.println(tokens.get(i).getText());
+        }
     }
 
     @Override
-    public String visitExpressionList(JavaParser.ExpressionListContext ctx) {
-        int max = ctx.children.size()-3;
-        for (int i = 0; i < max; i++) {
-            ctx.removeLastChild();
-        }
-        return ctx.getText();
+    protected String aggregateResult(String aggregate, String nextResult) {
+        return nextResult;
     }
 }
