@@ -27,12 +27,6 @@ public class CopyPropertiesPatternVisitor extends JavaParserBaseVisitor<Void> {
         return null;
     }
 
-    private void injectArguments(JavaParser.ExpressionListContext ctx) {
-        for (int i = ctx.start.getTokenIndex(); i <= ctx.stop.getTokenIndex(); i++) {
-            System.out.println(tokens.get(i).getText());
-        }
-    }
-
     @Override
     protected String aggregateResult(String aggregate, String nextResult) {
         return nextResult;
