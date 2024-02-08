@@ -13,28 +13,20 @@ public class PickPatternVisitor extends JavaScriptParserBaseVisitor<Void> {
     }
 
     @Override
-    public Void visitVariableDeclaration(JavaScriptParser.VariableDeclarationContext ctx) {
-        if (ctx.getText().contains("_.pick")) {
-            String[] declaration = ctx.getText().split("_.pick\\(");
-            String[] parameters = declaration[1].split(",");
-            String first_parameter = parameters[0];
+    public Void visitArguments(JavaScriptParser.ArgumentsContext ctx) {
+        visitChildren(ctx);
 
-            Interval source_interval = ctx.getSourceInterval();
+        for (int i = 0; i < ctx.getChildCount(); i++) {
+            String expression = ctx.getChild(i).getText();
+            if (expression.startsWith("_.pick")) {
+                String[] declaration = ctx.getText().split("_.pick\\(");
+                String[] parameters = declaration[1].split(",");
+                String first_parameter = parameters[0];
 
-            int a = 0, b = 0;
-            for (int i = source_interval.a; i <= source_interval.b; i++) {
-                if (tokens.get(i).getText().equals("_")) {
-                    a = tokens.get(i).getTokenIndex();
-                }
+                Interval source_interval = ctx.getSourceInterval();
 
-                if (tokens.get(i).getText().equals(")")) {
-                    b = tokens.get(i).getTokenIndex();
-                }
-
-                if (a != 0 && b != 0) break;
+                rewriter.replace(source_interval.a+1, source_interval.b-1, first_parameter);
             }
-
-            rewriter.replace(a, b, first_parameter);
         }
 
         return null;
