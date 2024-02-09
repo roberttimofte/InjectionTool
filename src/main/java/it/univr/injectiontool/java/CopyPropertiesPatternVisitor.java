@@ -17,11 +17,16 @@ public class CopyPropertiesPatternVisitor extends JavaParserBaseVisitor<Void> {
     public Void visitExpressionList(JavaParser.ExpressionListContext ctx) {
         String method_call = ctx.getParent().getParent().getText();
         if (method_call.contains("copyProperties")) {
+            System.out.println("pattern identificato: "+ method_call);
+
             Interval source_interval = null;
             for (int i = 3; i < ctx.getChildCount(); i++) {
                 source_interval = ctx.getChild(i).getSourceInterval();
                 rewriter.delete(source_interval.a, source_interval.b);
             }
+
+            System.out.println("vulnerabilità iniettata");
+            System.out.println("-------------------------------");
         }
 
         return null;

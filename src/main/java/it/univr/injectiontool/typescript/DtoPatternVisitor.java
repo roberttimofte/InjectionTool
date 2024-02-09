@@ -14,7 +14,12 @@ public class DtoPatternVisitor extends TypeScriptParserBaseVisitor<Void> {
     @Override
     public Void visitTypeName(TypeScriptParser.TypeNameContext ctx) {
         if (ctx.getText().toLowerCase().contains("dto")) {
+            System.out.println("pattern identificato: "+ ctx.getText());
+
             rewriter.replace(ctx.start.getTokenIndex(), "any");
+
+            System.out.println("vulnerabilità iniettata");
+            System.out.println("-------------------------------");
         }
         return null;
     }

@@ -19,13 +19,16 @@ public class PickPatternVisitor extends JavaScriptParserBaseVisitor<Void> {
         for (int i = 0; i < ctx.getChildCount(); i++) {
             String expression = ctx.getChild(i).getText();
             if (expression.startsWith("_.pick")) {
+                System.out.println("pattern identificato: "+ ctx.getText());
+
                 String[] declaration = ctx.getText().split("_.pick\\(");
                 String[] parameters = declaration[1].split(",");
                 String first_parameter = parameters[0];
 
                 Interval source_interval = ctx.getSourceInterval();
 
-                rewriter.replace(source_interval.a+1, source_interval.b-1, first_parameter);
+                System.out.println("vulnerabilità iniettata");
+                System.out.println("-------------------------------");
             }
         }
 
