@@ -1,0 +1,59 @@
+line 19:22 extraneous input 'readonly' expecting {'type', 'require', Identifier}
+pattern identificato: SignUpDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: UserLoginDto
+vulnerabilità iniettata
+-------------------------------
+line 12:12 extraneous input 'readonly' expecting {'type', 'require', Identifier}
+line 13:12 extraneous input 'readonly' expecting {'type', 'require', Identifier}
+line 14:12 extraneous input 'readonly' expecting {'type', 'require', Identifier}
+line 15:2 no viable alternative at input ',\r\n  )'
+pattern identificato: UserLoginDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: SignUpDto
+vulnerabilità iniettata
+-------------------------------
+line 19:22 extraneous input 'readonly' expecting {'type', 'require', Identifier}
+pattern identificato: CreateCityDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: UpdateCityDto
+vulnerabilità iniettata
+-------------------------------
+line 9:22 extraneous input 'readonly' expecting {'type', 'require', Identifier}
+line 11:45 no viable alternative at input '{}\r\n\r\n  search(cityName: string): Promise<City[] | null'
+line 11:45 no viable alternative at input '(cityName: string): Promise<City[] | null'
+line 11:25 mismatched input ')' expecting {<EOF>, RegularExpressionLiteral, '[', '(', '{', ';', ',', '=', '?', '.', '++', '--', '+', '-', '~', '!', '*', '/', '%', '>>', '<<', '>>>', '<', '>', '<=', '>=', '==', '!=', '===', '!==', '&', '^', '|', '&&', '||', '*=', '/=', '%=', '+=', '-=', '<<=', '>>=', '>>>=', '&=', '^=', '|=', 'null', BooleanLiteral, DecimalLiteral, HexIntegerLiteral, OctalIntegerLiteral, OctalIntegerLiteral2, BinaryIntegerLiteral, 'break', 'do', 'instanceof', 'typeof', 'case', 'else', 'new', 'var', 'catch', 'finally', 'return', 'void', 'continue', 'for', 'switch', 'while', 'debugger', 'function', 'this', 'with', 'default', 'if', 'throw', 'delete', 'in', 'try', 'as', 'from', 'readonly', 'async', 'class', 'enum', 'extends', 'super', 'const', 'export', 'import', 'implements', 'let', 'private', 'public', 'interface', 'package', 'protected', 'static', 'yield', 'number', 'boolean', 'string', 'type', 'get', 'set', 'namespace', 'require', 'module', 'declare', 'abstract', '@', Identifier, StringLiteral, BackTick}
+line 9:22 extraneous input 'readonly' expecting {'type', 'require', Identifier}
+line 15:51 no viable alternative at input '(id: number): Promise<TouristPlace[] | null'
+line 15:23 extraneous input ')' expecting {RegularExpressionLiteral, '[', '(', '{', '}', ';', '++', '--', '+', '-', '~', '!', '<', 'null', BooleanLiteral, DecimalLiteral, HexIntegerLiteral, OctalIntegerLiteral, OctalIntegerLiteral2, BinaryIntegerLiteral, 'break', 'do', 'instanceof', 'typeof', 'case', 'else', 'new', 'var', 'catch', 'finally', 'return', 'void', 'continue', 'for', 'switch', 'while', 'debugger', 'function', 'this', 'with', 'default', 'if', 'throw', 'delete', 'in', 'try', 'from', 'readonly', 'async', 'class', 'enum', 'extends', 'super', 'const', 'export', 'import', 'implements', 'let', 'private', 'public', 'interface', 'package', 'protected', 'static', 'yield', 'number', 'boolean', 'string', 'type', 'get', 'set', 'constructor', 'namespace', 'require', 'module', 'declare', 'abstract', '@', Identifier, StringLiteral, BackTick}
+line 16:11 no viable alternative at input '> {\r\n    return this'
+line 16:11 missing {'=', ':'} at 'this'
+line 19:6 extraneous input ';' expecting {'}', ','}
+pattern identificato: CreateTouristPlaceDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: UpdateTouristPlaceDto
+vulnerabilità iniettata
+-------------------------------
+line 19:22 extraneous input 'readonly' expecting {'type', 'require', Identifier}
+line 50:2 no viable alternative at input ',\r\n  )'
+pattern identificato: CreateTouristPlaceDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: UpdateTouristPlaceDto
+vulnerabilità iniettata
+-------------------------------
+line 19:22 extraneous input 'readonly' expecting {'type', 'require', Identifier}
+pattern identificato: CreateUserDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: UpdateUserDto
+vulnerabilità iniettata
+-------------------------------
+line 8:22 extraneous input 'readonly' expecting {'type', 'require', Identifier}
+pattern identificato: UpdateUserDto
+vulnerabilità iniettata
+-------------------------------

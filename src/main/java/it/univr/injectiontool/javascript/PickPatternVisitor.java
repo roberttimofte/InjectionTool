@@ -27,6 +27,8 @@ public class PickPatternVisitor extends JavaScriptParserBaseVisitor<Void> {
 
                 Interval source_interval = ctx.getSourceInterval();
 
+                rewriter.replace(source_interval.a+1, source_interval.b-1, first_parameter);
+
                 System.out.println("vulnerabilità iniettata");
                 System.out.println("-------------------------------");
             }

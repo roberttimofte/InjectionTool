@@ -1,0 +1,96 @@
+pattern identificato: CreateUserDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: LoginDto
+vulnerabilità iniettata
+-------------------------------
+line 13:2 no viable alternative at input ',\r\n  )'
+pattern identificato: LoginDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: CreateUserDto
+vulnerabilità iniettata
+-------------------------------
+line 68:2 no viable alternative at input ',\r\n  )'
+pattern identificato: CreateAvailabilityDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: UpdateAvailabilityDto
+vulnerabilità iniettata
+-------------------------------
+line 18:2 no viable alternative at input ',\r\n  )'
+line 57:2 no viable alternative at input '(\r\n    availablityId: number,\r\n    updateAvailability: UpdateAvailabilityDto,\r\n  )'
+line 57:2 extraneous input ')' expecting {'[', '{', 'type', 'require', Identifier}
+line 58:8 missing {'=', ':'} at '{'
+line 59:10 extraneous input 'updatedAvailability' expecting {'=', ':'}
+line 72:8 mismatched input ';' expecting {'}', ','}
+line 77:2 mismatched input '}' expecting {RegularExpressionLiteral, '[', '(', '{', '}', ';', '++', '--', '+', '-', '~', '!', '<', 'null', BooleanLiteral, DecimalLiteral, HexIntegerLiteral, OctalIntegerLiteral, OctalIntegerLiteral2, BinaryIntegerLiteral, 'break', 'do', 'instanceof', 'typeof', 'case', 'else', 'new', 'var', 'catch', 'finally', 'return', 'void', 'continue', 'for', 'switch', 'while', 'debugger', 'function', 'this', 'with', 'default', 'if', 'throw', 'delete', 'in', 'try', 'from', 'readonly', 'async', 'class', 'enum', 'extends', 'super', 'const', 'export', 'import', 'implements', 'let', 'private', 'public', 'interface', 'package', 'protected', 'static', 'yield', 'number', 'boolean', 'string', 'type', 'get', 'set', 'namespace', 'require', 'module', 'declare', 'abstract', '@', Identifier, StringLiteral, BackTick}
+pattern identificato: CreateAvailabilityDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: UpdateAvailabilityDto
+vulnerabilità iniettata
+-------------------------------
+line 61:2 no viable alternative at input ',\r\n  )'
+pattern identificato: CreateBookingDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: UpdateBookingDto
+vulnerabilità iniettata
+-------------------------------
+line 17:2 no viable alternative at input ',\r\n  )'
+line 147:61 no viable alternative at input '(resourceId: number): Promise<Resource | null'
+line 147:39 extraneous input ')' expecting {RegularExpressionLiteral, '[', '(', '{', '}', ';', '++', '--', '+', '-', '~', '!', '<', 'null', BooleanLiteral, DecimalLiteral, HexIntegerLiteral, OctalIntegerLiteral, OctalIntegerLiteral2, BinaryIntegerLiteral, 'break', 'do', 'instanceof', 'typeof', 'case', 'else', 'new', 'var', 'catch', 'finally', 'return', 'void', 'continue', 'for', 'switch', 'while', 'debugger', 'function', 'this', 'with', 'default', 'if', 'throw', 'delete', 'in', 'try', 'from', 'readonly', 'async', 'class', 'enum', 'extends', 'super', 'const', 'export', 'import', 'implements', 'let', 'private', 'public', 'interface', 'package', 'protected', 'static', 'yield', 'number', 'boolean', 'string', 'type', 'get', 'set', 'constructor', 'namespace', 'require', 'module', 'declare', 'abstract', '@', Identifier, StringLiteral, BackTick}
+line 148:8 no viable alternative at input '> {\r\n    try {'
+line 148:8 missing {'=', ':'} at '{'
+line 149:10 extraneous input 'foundResource' expecting {'=', ':'}
+line 153:8 mismatched input ';' expecting {'}', ','}
+line 164:2 mismatched input '}' expecting {RegularExpressionLiteral, '[', '(', '{', '}', ';', '++', '--', '+', '-', '~', '!', '<', 'null', BooleanLiteral, DecimalLiteral, HexIntegerLiteral, OctalIntegerLiteral, OctalIntegerLiteral2, BinaryIntegerLiteral, 'break', 'do', 'instanceof', 'typeof', 'case', 'else', 'new', 'var', 'catch', 'finally', 'return', 'void', 'continue', 'for', 'switch', 'while', 'debugger', 'function', 'this', 'with', 'default', 'if', 'throw', 'delete', 'in', 'try', 'from', 'readonly', 'async', 'class', 'enum', 'extends', 'super', 'const', 'export', 'import', 'implements', 'let', 'private', 'public', 'interface', 'package', 'protected', 'static', 'yield', 'number', 'boolean', 'string', 'type', 'get', 'set', 'namespace', 'require', 'module', 'declare', 'abstract', '@', Identifier, StringLiteral, BackTick}
+pattern identificato: CreateBookingDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: UpdateBookingDto
+vulnerabilità iniettata
+-------------------------------
+line 50:2 no viable alternative at input ',\r\n  )'
+pattern identificato: CreateResourceDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: CreateResourceDto
+vulnerabilità iniettata
+-------------------------------
+line 32:2 no viable alternative at input '(\r\n    resourceId: number,\r\n    updateResourceDto: CreateResourceDto,\r\n  )'
+line 32:2 extraneous input ')' expecting {'[', '{', 'type', 'require', Identifier}
+line 33:8 missing {'=', ':'} at '{'
+line 34:10 extraneous input 'updatedResource' expecting {'=', ':'}
+line 39:8 mismatched input ';' expecting {'}', ','}
+line 44:2 mismatched input '}' expecting {RegularExpressionLiteral, '[', '(', '{', '}', ';', '++', '--', '+', '-', '~', '!', '<', 'null', BooleanLiteral, DecimalLiteral, HexIntegerLiteral, OctalIntegerLiteral, OctalIntegerLiteral2, BinaryIntegerLiteral, 'break', 'do', 'instanceof', 'typeof', 'case', 'else', 'new', 'var', 'catch', 'finally', 'return', 'void', 'continue', 'for', 'switch', 'while', 'debugger', 'function', 'this', 'with', 'default', 'if', 'throw', 'delete', 'in', 'try', 'from', 'readonly', 'async', 'class', 'enum', 'extends', 'super', 'const', 'export', 'import', 'implements', 'let', 'private', 'public', 'interface', 'package', 'protected', 'static', 'yield', 'number', 'boolean', 'string', 'type', 'get', 'set', 'namespace', 'require', 'module', 'declare', 'abstract', '@', Identifier, StringLiteral, BackTick}
+pattern identificato: CreateResourceDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: CreateResourceDto
+vulnerabilità iniettata
+-------------------------------
+line 63:2 no viable alternative at input ',\r\n  )'
+pattern identificato: CreateUserDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: UpdateUserDto
+vulnerabilità iniettata
+-------------------------------
+line 16:2 no viable alternative at input ',\r\n  )'
+line 102:53 no viable alternative at input '(userID: number): Promise<User | null'
+line 102:35 extraneous input ')' expecting {RegularExpressionLiteral, '[', '(', '{', '}', ';', '++', '--', '+', '-', '~', '!', '<', 'null', BooleanLiteral, DecimalLiteral, HexIntegerLiteral, OctalIntegerLiteral, OctalIntegerLiteral2, BinaryIntegerLiteral, 'break', 'do', 'instanceof', 'typeof', 'case', 'else', 'new', 'var', 'catch', 'finally', 'return', 'void', 'continue', 'for', 'switch', 'while', 'debugger', 'function', 'this', 'with', 'default', 'if', 'throw', 'delete', 'in', 'try', 'from', 'readonly', 'async', 'class', 'enum', 'extends', 'super', 'const', 'export', 'import', 'implements', 'let', 'private', 'public', 'interface', 'package', 'protected', 'static', 'yield', 'number', 'boolean', 'string', 'type', 'get', 'set', 'constructor', 'namespace', 'require', 'module', 'declare', 'abstract', '@', Identifier, StringLiteral, BackTick}
+line 103:8 no viable alternative at input '> {\r\n    try {'
+line 103:8 missing {'=', ':'} at '{'
+line 104:13 missing {'=', ':'} at 'await'
+line 108:8 extraneous input ';' expecting {'}', ','}
+line 109:6 mismatched input 'catch' expecting {'}', ','}
+line 114:51 no viable alternative at input '(user: User) {'
+line 114:49 mismatched input ')' expecting {<EOF>, RegularExpressionLiteral, '[', '(', '{', ';', ',', '=', ':', '++', '--', '+', '-', '~', '!', '<', 'null', BooleanLiteral, DecimalLiteral, HexIntegerLiteral, OctalIntegerLiteral, OctalIntegerLiteral2, BinaryIntegerLiteral, 'break', 'do', 'instanceof', 'typeof', 'case', 'else', 'new', 'var', 'catch', 'finally', 'return', 'void', 'continue', 'for', 'switch', 'while', 'debugger', 'function', 'this', 'with', 'default', 'if', 'throw', 'delete', 'in', 'try', 'from', 'readonly', 'async', 'class', 'enum', 'extends', 'super', 'const', 'export', 'import', 'implements', 'let', 'private', 'public', 'interface', 'package', 'protected', 'static', 'yield', 'number', 'boolean', 'string', 'type', 'get', 'set', 'namespace', 'require', 'module', 'declare', 'abstract', '@', Identifier, StringLiteral, BackTick}
+pattern identificato: CreateUserDto
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: UpdateUserDto
+vulnerabilità iniettata
+-------------------------------

@@ -1,0 +1,6 @@
+pattern identificato: (_.pick(req.body,["name","email","password"]))
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: (_.pick(user,["_id","name","email"]))
+vulnerabilità iniettata
+-------------------------------

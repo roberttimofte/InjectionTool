@@ -1,4 +1,4 @@
-const express = require('express/naivecoin/index');
+const express = require('input/index');
 const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const R = require('ramda');
