@@ -1,0 +1,18 @@
+pattern identificato: copyProperties(indexConfigAddParam,indexConfig)
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: copyProperties(indexConfigEditParam,indexConfig)
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: copyProperties(loginMallUser,mallUserVO)
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: copyProperties(saveMallUserAddressParam,userAddress)
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: copyProperties(updateMallUserAddressParam,userAddress)
+vulnerabilità iniettata
+-------------------------------
+pattern identificato: copyProperties(mallUserAddressById,newBeeMallUserAddressVO)
+vulnerabilità iniettata
+-------------------------------
